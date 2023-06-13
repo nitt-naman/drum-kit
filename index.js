@@ -1,13 +1,14 @@
 let arr = document.querySelectorAll('button.drum');
 for (let i = 0; i < arr.length; i++) {
     arr[i].addEventListener("click", function () {
-        this.style.color = "white";
         sound(this.innerHTML);
+        addAnimateButton(this.innerHTML);
     });
 
 }
 document.addEventListener("keydown", function (event) {
     sound(event.key);
+    addAnimateButton(event.key);
 });
 
 function sound(key) {
@@ -51,4 +52,12 @@ function sound(key) {
 
     }
 
+}
+function addAnimateButton(key){
+    let obj = document.querySelector("."+key);
+    console.log(obj);
+    obj.classList.add("pressed");
+    setTimeout(function(){
+        obj.classList.remove("pressed");
+    },100);
 }
